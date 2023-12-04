@@ -1,4 +1,4 @@
-package com.techguyseli.Eventster.entities;
+package com.techguyseli.Eventster.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,11 +9,7 @@ import lombok.Setter;
  * Admin
  */
 
+@AllArgsConstructor
 public class Admin extends User {
-
-  private Admin() {
-    setUsername("root");
-    setPassword("root");
-  }
 
 }

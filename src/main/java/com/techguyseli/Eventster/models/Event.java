@@ -1,4 +1,4 @@
-package com.techguyseli.Eventster.entities;
+package com.techguyseli.Eventster.models;
 
 import java.time.LocalDateTime;
 
