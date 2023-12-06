@@ -1,6 +1,10 @@
 package com.techguyseli.Eventster.models;
 
+import java.util.Collection;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -19,6 +23,11 @@ public class Client extends User {
 
   public Client(String username, String password) {
     super(username, password);
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return List.of(new SimpleGrantedAuthority("CLIENT"));
   }
 
 }
