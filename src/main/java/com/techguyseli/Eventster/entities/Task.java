@@ -1,4 +1,4 @@
-package com.techguyseli.Eventster.models;
+package com.techguyseli.Eventster.entities;
 
 import java.time.DayOfWeek;
 import java.time.Duration;
@@ -6,7 +6,6 @@ import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,15 +13,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * Task
- */
 @AllArgsConstructor
 @Getter
 @Setter
 
 @Entity
-@DiscriminatorValue("TASK")
 public class Task extends Item {
 
   @Id

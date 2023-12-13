@@ -1,23 +1,17 @@
-package com.techguyseli.Eventster.models;
+package com.techguyseli.Eventster.entities;
 
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- * Item
- */
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -25,7 +19,6 @@ import lombok.Setter;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "ENTITY_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class Item {
 
   @Id
@@ -36,7 +29,6 @@ public class Item {
   private ItemStatus status;
 
   @ManyToOne
-  @JoinColumn(name = "client_id")
   private Client user;
 
   public Item(

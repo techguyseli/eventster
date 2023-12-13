@@ -1,4 +1,4 @@
-package com.techguyseli.Eventster.models;
+package com.techguyseli.Eventster.entities;
 
 import java.util.Collection;
 import java.util.List;
@@ -6,8 +6,6 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,9 +18,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- * User
- */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -31,7 +27,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "_user")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "ENTITY_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class User  implements UserDetails{
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

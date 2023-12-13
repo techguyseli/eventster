@@ -1,4 +1,4 @@
-package com.techguyseli.Eventster.models;
+package com.techguyseli.Eventster.entities;
 
 import java.util.Collection;
 import java.util.List;
@@ -6,19 +6,16 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
 
-/**
- * Client
- */
 
+@AllArgsConstructor
 @Entity
-@DiscriminatorValue("CLIENT")
 public class Client extends User {
 
-  @OneToMany(mappedBy = "user")
+  @OneToMany
   List<Item> items;
 
   public Client(String username, String password) {

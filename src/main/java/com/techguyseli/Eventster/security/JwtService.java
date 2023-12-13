@@ -1,6 +1,8 @@
-package com.techguyseli.Eventster.services;
+package com.techguyseli.Eventster.security;
 
 import java.security.Key;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
@@ -35,12 +38,31 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
+    public String generateToken(UserDetails userDetails){
+        return generateToken(new HashMap<>(), userDetails);
+    }
+
     public String generateToken(
         Map<String, Object> extraClaims,
         UserDetails userDetails
     ){
-        // TODO 1.05.00
-        return null;
+        return Jwts
+        .builder()
+        .setClaims(extraClaims)
+        .setSubject(userDetails.getUsername())
+        .setIssuedAt(new Date(System.currentTimeMillis()))
+        .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+        .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+        .compact();
+    }
+
+    public boolean isJwtValid(String jwt, UserDetails userDetails){
+        final String username = extractUsername(jwt);
+
+        Date expirationDate = extractClaim(jwt, Claims::getExpiration);
+
+        return username.equals(userDetails.getUsername())
+            && expirationDate.after(new Date(System.currentTimeMillis()));
     }
 
     private Key getSigningKey() {

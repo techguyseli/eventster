@@ -1,22 +1,18 @@
-package com.techguyseli.Eventster.models;
+package com.techguyseli.Eventster.entities;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * Event
- */
+
 @AllArgsConstructor
 @Getter
 @Setter
 
 @Entity
-@DiscriminatorValue("EVENT")
 public class Event extends Item {
 
   private LocalDateTime startDate;
