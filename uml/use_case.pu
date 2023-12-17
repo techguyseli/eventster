@@ -1,0 +1,37 @@
+@startuml usecase_dg
+
+left to right direction
+
+actor "Visitor" as vis
+actor "Admin" as adm
+actor "Client" as clt
+
+rectangle "Eventster"{
+    usecase "Authenticate" as auth
+    usecase "Register" as reg
+    usecase "view clients" as view_clients
+    usecase "Delete clients" as delete_clients
+    usecase "Change client's account status" as change_acc_status
+    usecase "Manage TODOs" as mng_todo
+    usecase "Manage events" as mng_event
+    usecase "Manage notes" as mng_notes
+}
+
+view_clients ..> auth
+delete_clients ..> auth
+change_acc_status ..> auth
+mng_todo ..> auth
+mng_event ..> auth
+mng_notes ..> auth
+
+vis --> reg
+
+adm --> delete_clients
+adm --> change_acc_status
+adm --> view_clients
+
+clt --> mng_todo
+clt --> mng_event
+clt --> mng_notes
+
+@enduml

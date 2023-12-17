@@ -13,8 +13,7 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(HttpException.class)
   public ResponseEntity<String> handleNotFoundException(HttpException ex) {
     return ResponseEntity
-        .status(ex.getStatus())
-        .header("Content-Type", "text/plain")
+        .status(ex.getHttpStatus())
         .body(ex.getMessage());
   }
 

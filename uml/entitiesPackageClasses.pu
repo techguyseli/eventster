@@ -1,0 +1,57 @@
+@startuml classes
+
+top to bottom direction
+
+package entities {
+    ' class Note{
+    '     Long id
+    '     String title
+    '     String body
+    ' }
+    enum ItemStatus{
+        ACTIVE
+        CANCELED
+        DONE
+    }
+    class Item {
+        Long id
+        String title
+        String description
+    }
+    class Task{
+        Integer priority
+        Set<DayOfWeek> daysOfWeek
+        Integer repititions
+        Duration estimatedDuration
+        List<String> subTasks
+    }
+    class Event{
+        DateTime start
+        DateTime end
+    }
+    enum AccountStatus{
+        ACTIVE
+        BLOCKED
+    }
+    class User{
+        Long id
+        String username
+        String password
+    }
+    class Client{}
+    class Admin{}
+}
+
+Client --> User
+Admin --> User
+
+Task --> Item
+Event --> Item
+
+' Client "0..n" -- "1" Note : Write
+Client "0..n" -- "1" Item : Register
+
+Item "1" -- "0..n" ItemStatus : Is
+Client "1" -- "0..n" AccountStatus : Is
+
+@enduml

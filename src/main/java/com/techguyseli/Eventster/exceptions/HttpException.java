@@ -2,19 +2,11 @@ package com.techguyseli.Eventster.exceptions;
 
 import org.springframework.http.HttpStatus;
 
-import lombok.Getter;
+public abstract class HttpException extends Exception {
 
-/**
- * HttpException
- */
-public class HttpException extends Exception {
-
-  @Getter
-  private HttpStatus status;
-
-  public HttpException(String msg, HttpStatus status) {
+  public HttpException(String msg){
     super(msg);
-    this.status = status;
   }
 
+  public abstract HttpStatus getHttpStatus();
 }
