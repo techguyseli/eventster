@@ -1,10 +1,10 @@
 package com.techguyseli.Eventster.entities;
 
-import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
-@Entity
 public class Admin extends User {
 
+
+    public Admin(String username, String password){
+        setUsername(username);
+        setPassword(password);
+    }
 }

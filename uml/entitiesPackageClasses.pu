@@ -14,39 +14,38 @@ package entities {
         DONE
     }
     class Item {
-        Long id
-        String title
-        String description
+        - Long id
+        - String title
+        - String description
     }
     class Task{
-        Integer priority
-        Set<DayOfWeek> daysOfWeek
-        Integer repititions
-        Duration estimatedDuration
-        List<String> subTasks
+        - Integer priority
+        - Set<DayOfWeek> daysOfWeek
+        - Integer repititions
+        - Duration estimatedDuration
+        - List<String> subTasks
     }
     class Event{
-        DateTime start
-        DateTime end
+        - DateTime start
+        - DateTime end
     }
     enum AccountStatus{
         ACTIVE
         BLOCKED
     }
     class User{
-        Long id
-        String username
-        String password
+        - Long id
+        - String username
+        - String password
     }
     class Client{}
     class Admin{}
 }
 
-Client --> User
-Admin --> User
-
 Task --> Item
 Event --> Item
+Admin --> User
+Client --> User
 
 ' Client "0..n" -- "1" Note : Write
 Client "0..n" -- "1" Item : Register
